@@ -2,19 +2,17 @@ package com.example.escape.controller;
 
 import com.example.escape.model.Product;
 import com.example.escape.service.ApiService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/products")
+@RequiredArgsConstructor
 public class ApiController {
-
-    @Autowired
-    private ApiService apiService;
+    private final ApiService apiService;
 
     //read
     @GetMapping("/test")
