@@ -27,12 +27,12 @@ public class ApiDao {
 
 
     //select one product by pdId
-    public  Product getProductByPdId(String pdId){
+    public  Product getProductByPdId(String pdId) throws Exception {
         return  products
                 .stream()
                 .filter(pd -> pd.getPdId().equals(pdId))
                 .findAny()
-                .orElse(new Product(-1, "","",""));
+                .orElseThrow(Exception::new);
 
     }
 
@@ -43,11 +43,11 @@ public class ApiDao {
     }
 
     //update
-    public  void updateProduct (String pdId, Product product){
+    public void  updateProduct (String pdId, Product product) throws Exception {
         products.stream()
                 .filter(curProduct -> curProduct.getPdId().equals(pdId))
                 .findAny()
-                .orElse(new Product(-1, "","",""))
+                .orElseThrow(Exception::new)
                 .setPdName(product.getPdName());
 
     }
@@ -55,6 +55,7 @@ public class ApiDao {
     //delect
     public void deleteProduct(String pdId){
         products.removeIf(product -> product.getPdId().equals(pdId));
+
     }
 
 }

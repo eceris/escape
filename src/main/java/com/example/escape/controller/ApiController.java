@@ -29,23 +29,24 @@ public class ApiController {
     }
 
     @GetMapping("/{pdId}")
-    public Product getProductByPdId (@PathVariable String pdId){
+    public Product getProductByPdId (@PathVariable String pdId) throws Exception {
         return apiService.getProductByPdId(pdId);
     }
 
     @PostMapping("")
-    public Product registerProduct (@RequestBody  Product product){
+    public Product registerProduct (@RequestBody  Product product) throws Exception {
         return apiService.registerProduct(product);
     }
 
     @PutMapping("/{pdId}")
-    public void modifyProduct (@PathVariable String pdId, @RequestBody Product product){
-         apiService.modifyProduct("pdId",product);
+    public Product modifyProduct (@PathVariable String pdId, @RequestBody Product product) throws Exception {
+        return apiService.modifyProduct("pdId",product);
     }
 
     @DeleteMapping("/{pdId}")
-    public  void removeProduct (@PathVariable String pdId){
+    public  void removeProduct (@PathVariable String pdId) throws Exception {
         apiService.removeProduct(pdId);
+
     }
 
 }
